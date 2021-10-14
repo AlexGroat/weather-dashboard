@@ -1,0 +1,18 @@
+/**********************
+*
+* Author: Alex Groat
+* Date: 14/10/2021
+* Github: https://github.com/AlexGroat/weather-dashboard
+***********************/
+
+:root {
+    --ash-gray: #AEB4A9;
+    --desert-sand: #e0c1b3;
+    --pastel-pink: #d89a9e;
+    --puce: #c37d92;
+    --deep-taupe: #846267;
+}
+
+.search-col {
+    background-color: var(--ash-gray);
+}
