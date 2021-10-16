@@ -1,6 +1,6 @@
 var now = moment();
 var currentDate = (now.format("MM/DD/YYYY"));
-var city =  "";
+var city = "";
 var searchCity = $("#search-city");
 var searchCityButton = $("#search-city-button");
 
@@ -18,12 +18,24 @@ function weatherDisplay(event) {
         currentWeather(city);
 
 
-// store previously searched cities in local storage 
+        // store previously searched cities in local storage 
 
         var listedCity = document.getElementById("city-history");
-        cityHistory.textContent = "";
+        listedCity.textContent = "";
+
+        var citySearchHistory = localStorage.getItem("searchedCities");
+        if (citySearchHistory === null) {
+            citySearchHistory = [];
+        } else {
+            citySearchHistory = JSON.parse(citySearchHistory);
+        }
+
+        citySearchHistory.push(city);
+
+        var cityHistoryNames = JSON.stringify(citySearchHistory);
+        localStorage.setItem("city-history", cityHistoryNames);
 
         
-    
+
     }
 }
