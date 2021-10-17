@@ -9,9 +9,9 @@ var fiveDays = moment().add(5, 'days').calendar();
 $(document).ready(function () {
 
 
-    var arrayForCities = [];
+    var cityArray = [];
 
-    var forecast = ["1", "2", "3", "4", "5"];
+    var forecastDays = ["1", "2", "3", "4", "5"];
 
     var localStorageArray = JSON.parse(localStorage.getItem("cities"));
 
@@ -166,9 +166,24 @@ $(document).ready(function () {
 
                 if (i = 0, i > 4, i++) {
                     uvLevel.$("#uv").css("background-color", "green");
-                } else if (i < 5, i++) {
-                    uvLevel.$("#uv").css("background-color", "orange");
+                } else if (uvLevel === 5||uvLevel === 6||uvLevel === 7) {
+                    $("#uv").css("background-color","yellow");
                 } else {
-                    $("#uv").css("backround-color", "red");
-                }});
-                
+                    $("#uv").css("background-color", "red");
+                }
+            });
+
+        
+
+        // creates div for forecast
+
+        function fiveDayForecast(){
+            $("#weather").empty();
+            for(var i=0;i<todaysWeather.length; i++){
+                var appendDiv=$("<div>");
+                appendDiv.addClass(todaysWeather[i]);
+                appendDiv.attr("data-names",todaysWeather[i]);
+                $("#weather").append(appendDiv);
+            }
+        }
+    
