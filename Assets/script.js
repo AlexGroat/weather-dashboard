@@ -1,52 +1,38 @@
-var now = moment();
-var currentDate = (now.format("MM/DD/YYYY"));
-var city = "";
-var searchCity = $("#search-city");
-var searchCityButton = $("#search-city-button");
-
-// API key for openweathermap.org
-const apiKey = "1514b2ce008df16fa808e34044020461"
-
-// weather is displayed when user clicks on search button 
-searchCityButton.on("click", weatherDisplay);
-
-// after running below function it will display weather 
-function weatherDisplay(event) {
-    event.preventDefault();
-    if (searchCity.val().trim() !== "") {
-        city = searchCity.val().trim();
-        currentWeather(city);
+var date=moment().format('L');
+var nextDay=moment().add(1, 'days').calendar(); 
+var twoDays=moment().add(2, 'days').calendar(); 
+var threeDays=moment().add(3, 'days').calendar(); 
+var fourDays=moment().add(4, 'days').calendar(); 
+var fiveDays=moment().add(5, 'days').calendar(); 
 
 
-        // store previously searched cities in local storage 
+$(document).ready(function(){
+ 
 
-        var historyListedCity = document.getElementById("city-history");
-        historyListedCity.textContent = "";
+    var arrayForCities=[];
 
-        var citySearchHistory = localStorage.getItem("searchedCities");
-        if (citySearchHistory === null) {
-            citySearchHistory = [];
-        } else {
-            citySearchHistory = JSON.parse(citySearchHistory);
-        }
+    var weatherDays=["1","2","3","4","5"];
 
-        citySearchHistory.push(city);
+    var localStorageArray=JSON.parse(localStorage.getItem("cities"));
 
-        var cityHistoryNames = JSON.stringify(citySearchHistory);
-        localStorage.setItem("city-history", cityHistoryNames);
+    
 
-        // makes list for previously searched cities
 
-        for (i = 0; i < citySearchHistory.length; i++) {
-            var historyList = document.createElement("li");
-            historyList.setAttribute("id", "city-historyList");
-            historyList.textContent = citySearchHistory[i];
-            historyListedCity.appendChild(historyList);
-        }
+
+    
+    if(localStorageArray){
+        arrayForCities=localStorageArray;
     }
-};
 
-function liveWeather(city) {
-    var weatherUrl =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=1514b2ce008df16fa808e34044020461&units=metric";
-}
+ 
 
+
+    function searchCity(city){
+
+        var APIKey="1514b2ce008df16fa808e34044020461";
+
+        var queryURL="https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+APIKey
+
+        var queryURLUv="https://api.openweathermap.org/data/2.5/uvi/forecast?lat=37.75&lon=-122.37&cnt=0&appid="+APIKey;
+
+    };   
