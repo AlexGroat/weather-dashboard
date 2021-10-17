@@ -53,7 +53,20 @@ function liveWeather(city) {
     $.ajax({
         url: queryURL,
         method: "GET",
-        }).then(function(weatherInfo) {})
+    }).then(function (weatherInfo) {
 
+        var iconWeather = weatherInfo.weather[0].icon;
+        var iconImageUrl = "https://openweathermap.org/img/wn/" + iconWeather + "@2x.png";
+        var now = moment();
+        var city = document.getElementById("current-city");
+        city.innerHTML = (weatherInfo + " " + "(" + now.format("MM/DD/YYYY") + ")" + '<img src="' + iconImageUrl + '">');
 
-    };
+        var temp = document.getElementById("temperature");
+        temp.textContent = "Temperature: " + weatherData.main.temp + " °C";
+
+        var humidity = document.getElementById("humidity");
+        humidity.textContent = "Humidity: " + weatherData.main.humidity + "%";
+
+        var wind = document.getElementById("wind-speed");
+        wind.textContent = "Wind Speed: " + weatherData.wind.speed + " MPH";
+    }):
