@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     var arrayForCities = [];
 
-    var weatherDays = ["1", "2", "3", "4", "5"];
+    var forecast = ["1", "2", "3", "4", "5"];
 
     var localStorageArray = JSON.parse(localStorage.getItem("cities"));
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey
 
-        var queryURLUv = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=37.75&lon=-122.37&cnt=0&appid=" + APIKey;
+        var uvUrl = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=37.75&lon=-122.37&cnt=0&appid=" + APIKey;
 
 
         $.ajax({
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
             $(".city").html("<h3>" + response.city.name + "  " + date + "  ");
 
-            var currentWeather = response.list[0].weather[0].main;
+            var todaysWeather = response.list[0].weather[0].main;
 
             var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
             $(".1").html("<div id='day' class='float-child1'>" + nextDay + "<br>" + "<h7>" + response.list[2].weather[0].main + "<br>" + "<div>" + "temp: " + tempOne.toFixed(2) + "°F" + "<br>" + "Humidity: " + response.list[2].main.humidity + "%");
 
-            var dayOne= response.list[2].weather[0].main;
+            var dayOne = response.list[2].weather[0].main;
 
             // day 2 weather forecast
             var tempTwo = (response.list[10].main.temp - 273.15) * 1.80 + 32;
@@ -89,68 +89,86 @@ $(document).ready(function () {
 
             var dayFive = response.list[34].weather[0].main;
 
-            // conditional for icion for current weather
-            if (currentWeather==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (currentWeather==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (currentWeather==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            // conditional for icon for current weather
+            if (todaysWeather === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (todaysWeather === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (todaysWeather === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
             // day one weather
-            if (dayOne==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (dayOne==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (dayOne==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            if (dayOne === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (dayOne === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (dayOne === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
             // day 2 weather 
 
-            if (dayTwo==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (dayTwo==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (dayTwo==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            if (dayTwo === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (dayTwo === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (dayTwo === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
             //day 3 weather 
 
-            if (dayThree ==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (dayThree ==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (dayThree ==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            if (dayThree === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (dayThree === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (dayThree === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
             // day 4 weather 
 
-            if (dayFour ==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (dayFour ==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (dayFour ==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            if (dayFour === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (dayFour === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (dayFour === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
             // day 5 weather
 
-            if (dayFive ==="Rain"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/rainy.png", width:"50",height:"50"}))
-                
-            }else if (dayFive ==="Clear"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/sun.png", width:"50",height:"50"}))
-            }else if (dayFive ==="Clouds"){
-                $("h3").append($("<img>",{id:"rain",src:"assets/images/cloudy.png", width:"50",height:"50"}))
+            if (dayFive === "Rain") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/rainy.png", width: "50", height: "50" }))
+
+            } else if (dayFive === "Clear") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/sun.png", width: "50", height: "50" }))
+            } else if (dayFive === "Clouds") {
+                $("h3").append($("<img>", { id: "rain", src: "assets/images/cloudy.png", width: "50", height: "50" }))
             }
 
-    });
+            // display uv index on weather card
+
+            $.ajax({
+                url: uvUrl,
+                method: "GET"
+            }).then(function (response) {
+
+                $(".uv").html("UV Index: " + "<button type='button' id='uv' class='btn btn-danger'>" + response[0].value);
+
+                var uvLevel = response[i].value;
+
+                if (i = 0, i > 4, i++) {
+                    uvLevel.$("#uv").css("background-color", "green");
+                } else if (i < 5, i++) {
+                    uvLevel.$("#uv").css("background-color", "orange");
+                } else {
+                    $("#uv").css("backround-color", "red");
+                }});
+                
