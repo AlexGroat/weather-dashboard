@@ -20,8 +20,8 @@ function weatherDisplay(event) {
 
         // store previously searched cities in local storage 
 
-        var listedCity = document.getElementById("city-history");
-        listedCity.textContent = "";
+        var historyListedCity = document.getElementById("city-history");
+        historyListedCity.textContent = "";
 
         var citySearchHistory = localStorage.getItem("searchedCities");
         if (citySearchHistory === null) {
@@ -35,7 +35,15 @@ function weatherDisplay(event) {
         var cityHistoryNames = JSON.stringify(citySearchHistory);
         localStorage.setItem("city-history", cityHistoryNames);
 
-        
+        // makes list for previously searched cities
+
+        for (i = 0; i < citySearchHistory.length; i++) {
+            var historyList = document.createElement("li");
+            historyList.setAttribute("id", "city-historyList");
+            historyList.textContent = citySearchHistory[i];
+            historyListedCity.appendChild(historyList);
+        }
 
     }
 }
+
