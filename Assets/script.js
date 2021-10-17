@@ -5,7 +5,7 @@ var searchCity = $("#search-city");
 var searchCityButton = $("#search-city-button");
 
 // API key for openweathermap.org
-var apiKey = "1514b2ce008df16fa808e34044020461"
+const apiKey = "1514b2ce008df16fa808e34044020461"
 
 // weather is displayed when user clicks on search button 
 searchCityButton.on("click", weatherDisplay);
@@ -14,7 +14,7 @@ searchCityButton.on("click", weatherDisplay);
 function weatherDisplay(event) {
     event.preventDefault();
     if (searchCity.val().trim() !== "") {
-        city - searchCity.val().trim();
+        city = searchCity.val().trim();
         currentWeather(city);
 
 
@@ -43,7 +43,17 @@ function weatherDisplay(event) {
             historyList.textContent = citySearchHistory[i];
             historyListedCity.appendChild(historyList);
         }
-
     }
 }
 
+// calling from open weather API to get weather from searched city and display information on a card
+function liveWeather(city) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey + "&units=metric";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        }).then(function(weatherInfo) {})
+
+
+    };
