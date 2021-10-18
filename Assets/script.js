@@ -9,7 +9,7 @@ var fiveDays = moment().add(5, 'days').calendar();
 $(document).ready(function () {
 
 
-    var cityArray = [];
+    var searchedCitiesArray = [];
 
     var forecastDays = ["1", "2", "3", "4", "5"];
 
@@ -166,24 +166,44 @@ $(document).ready(function () {
 
                 if (i = 0, i > 4, i++) {
                     uvLevel.$("#uv").css("background-color", "green");
-                } else if (uvLevel === 5||uvLevel === 6||uvLevel === 7) {
-                    $("#uv").css("background-color","yellow");
+                } else if (uvLevel === 5 || uvLevel === 6 || uvLevel === 7) {
+                    $("#uv").css("background-color", "yellow");
                 } else {
                     $("#uv").css("background-color", "red");
                 }
             });
 
-        
 
-        // creates div for forecast
 
-        function fiveDayForecast(){
-            $("#weather").empty();
-            for(var i=0;i<todaysWeather.length; i++){
-                var appendDiv=$("<div>");
-                appendDiv.addClass(todaysWeather[i]);
-                appendDiv.attr("data-names",todaysWeather[i]);
-                $("#weather").append(appendDiv);
+            // creates div for forecast
+
+            function fiveDayForecast() {
+                $("#weather").empty();
+                for (var i = 0; i < todaysWeather.length; i++) {
+                    var appendDiv = $("<div>");
+                    appendDiv.addClass(todaysWeather[i]);
+                    appendDiv.attr("data-names", todaysWeather[i]);
+                    $("#weather").append(appendDiv);
+                }
             }
-        }
-    
+
+
+            // button is created from search
+
+            function renderButtons() {
+                $("#cityList").empty();
+                for (var i = 0; i < searchedCitiesArray.length; i++) {
+                    var appendButton = $("<button class='btn btn-primary'>");
+                    appendButton.addClass("city-btn");
+                    appendButton.attr("data-name", searchedCitiesArray[i]);
+                    appendButton.text(searchedCitiesArray[i]);
+                    $("#cityList").append(appendButton);
+
+
+                    localStorage.setItem('cities', JSON.stringify(searchedCitiesArray));
+
+                }
+            }
+
+
+
