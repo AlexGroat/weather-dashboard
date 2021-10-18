@@ -12,41 +12,46 @@
 </head>
 
 <body>
-    
-    <header>Weather Dashboard</header>
-    <div class="contianer">
+
+    <header>
+        <h1>Weather Dashboard</h1>
+
+    </header>
+
+    <div class="container">
         <row class="row">
 
             <section class="col-lg-3">
                 <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                <form id="city-form">
-                    <label for="city-input">Search for a City : </label><br>
-                    <input type="text" id="city-input">
-                    <button id="select-city" type="submit" value="search" class="btn btn-primary ">Search</button>
-                
-                </form><br>
-                <continer id="cityList"></continer>
-                </div>
+                    <div class="card-body">
+                        <form id="city-form">
+                            <label for="city-input">Search for a City : </label><br>
+                            <input type="text" id="city-input">
+                            <button id="select-city" type="submit" value="search"
+                                class="btn btn-primary ">Search</button>
+
+                        </form><br>
+                        <container id="cityList"></container>
+                    </div>
                 </div>
             </section>
 
             <section class="col-lg-9">
                 <div class="card w-60" id="main">
-                <div class="card-body" id="main-section">
-                    <div id="cityInfo">
-                    <h5 class="city"></h5>
-                    <div class="date"></div>
-                    <div class="tempreature"></div>
-                    <div class="humidity"></div>
-                    <div class="wind"></div>
-                    <div class="uv"></div>
-                    </div><br><br>
-                    <h4></h4>
-                <div class="float-container">
-                    <div id="weather"></div>
-                </div>
-                </div>
+                    <div class="card-body" id="main-section">
+                        <div id="cityInfo">
+                            <h5 class="city"></h5>
+                            <div class="date"></div>
+                            <div class="temperature"></div>
+                            <div class="humidity"></div>
+                            <div class="wind"></div>
+                            <div class="uv"></div>
+                        </div><br><br>
+                        <h4></h4>
+                        <div class="float-container">
+                            <div id="weather"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 

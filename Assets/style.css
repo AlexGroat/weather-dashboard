@@ -1,7 +1,7 @@
 /**********************
 *
 * Author: Alex Groat
-* Date: 14/10/2021
+* Date: 18/10/2021
 * Github: https://github.com/AlexGroat/weather-dashboard
 ***********************/
 
@@ -13,3 +13,30 @@
     --deep-taupe: #846267;
 }
 
+header {
+    display: flex;
+    margin-top: 5px;
+    height: 100px;
+    background-color: var(--ash-gray);
+}
+
+h1 {
+    margin-left: 40%;
+    margin-top: 20px;
+    color: var(--puce);
+}
+
+body {
+    background-color: var(--desert-sand);
+}
+
+.card-body {
+    background-color: var(--puce);
+}
+
+#weather {
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}

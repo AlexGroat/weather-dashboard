@@ -52,7 +52,7 @@ $(document).ready(function(){
 
             var tempF=(response.list[0].main.temp -273.15)*1.80+32;
 
-            $(".tempreature").text("Tempreature: "+tempF.toFixed(2)+"°F");
+            $(".temperature").text("Temperature: "+tempF.toFixed(2)+"°F");
 
             $(".humidity").text("Humidity: "+response.list[0].main.humidity+"%");
 
